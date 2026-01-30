@@ -7,8 +7,8 @@ public static class DbSeeder
 {
     public static async Task SeedAsync(AppDbContext context)
     {
-        // Seed Courts if empty
-        if (!context.Courts.Any())
+        // Seed Courts if Sân 1 doesn't exist
+        if (!context.Courts.Any(c => c.Name == "Sân 1"))
         {
             var courts = new List<Court>
             {

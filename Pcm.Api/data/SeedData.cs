@@ -39,7 +39,7 @@ public static class SeedData
             {
                 Email = memberAdminEmail,
                 Password = memberAdminPassword,
-                FullName = "LUC",
+                FullName = "Nguyễn Tiến Lực",
                 IsActive = true,
                 WalletBalance = 5000000,
                 TotalSpent = 0,
@@ -49,7 +49,7 @@ public static class SeedData
         }
         else if (member.FullName != "LUC")
         {
-            member.FullName = "LUC";
+            member.FullName = "Nguyễn Tiến Lực";
             await db.SaveChangesAsync();
         }
     }
