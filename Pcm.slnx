@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Pcm.Api/Pcm.Api.csproj" />
+  <Project Path="Pcm.Application/Pcm.Application.csproj" />
+  <Project Path="Pcm.Domain/Pcm.Domain.csproj" />
+  <Project Path="Pcm.Infrastructure/Pcm.Infrastructure.csproj" />
+</Solution>

@@ -1,0 +1,14 @@
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\bin\Debug\net10.0\Pcm.Domain.deps.json
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\bin\Debug\net10.0\Pcm.Domain.runtimeconfig.json
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\bin\Debug\net10.0\Pcm.Domain.dll
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\bin\Debug\net10.0\Pcm.Domain.pdb
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\obj\Debug\net10.0\Pcm.Domain.csproj.AssemblyReference.cache
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\obj\Debug\net10.0\Pcm.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\obj\Debug\net10.0\Pcm.Domain.AssemblyInfoInputs.cache
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\obj\Debug\net10.0\Pcm.Domain.AssemblyInfo.cs
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\obj\Debug\net10.0\Pcm.Domain.csproj.CoreCompileInputs.cache
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\obj\Debug\net10.0\Pcm.Domain.dll
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\obj\Debug\net10.0\refint\Pcm.Domain.dll
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\obj\Debug\net10.0\Pcm.Domain.pdb
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\obj\Debug\net10.0\Pcm.Domain.genruntimeconfig.cache
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Domain\obj\Debug\net10.0\ref\Pcm.Domain.dll

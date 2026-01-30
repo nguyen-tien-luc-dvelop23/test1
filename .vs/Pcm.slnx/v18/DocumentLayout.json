@@ -1,0 +1,273 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.domain\\entities\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|solutionrelative:pcm.domain\\entities\\member.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3BC4915-8D74-193A-98EF-570EBDD37ED8}|Pcm.Api\\Pcm.Api.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3BC4915-8D74-193A-98EF-570EBDD37ED8}|Pcm.Api\\Pcm.Api.csproj|solutionrelative:pcm.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D78BC559-38A7-5061-74E5-646B910F98D2}|Pcm.Infrastructure\\Pcm.Infrastructure.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.infrastructure\\migrations\\20260127033209_addbookingnavigation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D78BC559-38A7-5061-74E5-646B910F98D2}|Pcm.Infrastructure\\Pcm.Infrastructure.csproj|solutionrelative:pcm.infrastructure\\migrations\\20260127033209_addbookingnavigation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.domain\\entities\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|solutionrelative:pcm.domain\\entities\\booking.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3BC4915-8D74-193A-98EF-570EBDD37ED8}|Pcm.Api\\Pcm.Api.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3BC4915-8D74-193A-98EF-570EBDD37ED8}|Pcm.Api\\Pcm.Api.csproj|solutionrelative:pcm.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3BC4915-8D74-193A-98EF-570EBDD37ED8}|Pcm.Api\\Pcm.Api.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B3BC4915-8D74-193A-98EF-570EBDD37ED8}|Pcm.Api\\Pcm.Api.csproj|solutionrelative:pcm.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.domain\\pcm.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|solutionrelative:pcm.domain\\pcm.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3BC4915-8D74-193A-98EF-570EBDD37ED8}|Pcm.Api\\Pcm.Api.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.api\\pcm.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B3BC4915-8D74-193A-98EF-570EBDD37ED8}|Pcm.Api\\Pcm.Api.csproj|solutionrelative:pcm.api\\pcm.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D78BC559-38A7-5061-74E5-646B910F98D2}|Pcm.Infrastructure\\Pcm.Infrastructure.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D78BC559-38A7-5061-74E5-646B910F98D2}|Pcm.Infrastructure\\Pcm.Infrastructure.csproj|solutionrelative:pcm.infrastructure\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5C65BC0C-4464-7129-91C2-3869415602ED}|Pcm.Application\\Pcm.Application.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.application\\pcm.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{5C65BC0C-4464-7129-91C2-3869415602ED}|Pcm.Application\\Pcm.Application.csproj|solutionrelative:pcm.application\\pcm.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D78BC559-38A7-5061-74E5-646B910F98D2}|Pcm.Infrastructure\\Pcm.Infrastructure.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.infrastructure\\pcm.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D78BC559-38A7-5061-74E5-646B910F98D2}|Pcm.Infrastructure\\Pcm.Infrastructure.csproj|solutionrelative:pcm.infrastructure\\pcm.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.domain\\entities\\court.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|solutionrelative:pcm.domain\\entities\\court.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.domain\\entities\\wallettransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|solutionrelative:pcm.domain\\entities\\wallettransaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.domain\\enums\\tier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9B38C18-8D70-ACB9-FDD4-D54EBE06B6D1}|Pcm.Domain\\Pcm.Domain.csproj|solutionrelative:pcm.domain\\enums\\tier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D78BC559-38A7-5061-74E5-646B910F98D2}|Pcm.Infrastructure\\Pcm.Infrastructure.csproj|c:\\hoctap\\mobile_flutter_1771020711_nguyenmanhtuan\\backend\\pcm.infrastructure\\migrations\\20260127025804_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D78BC559-38A7-5061-74E5-646B910F98D2}|Pcm.Infrastructure\\Pcm.Infrastructure.csproj|solutionrelative:pcm.infrastructure\\migrations\\20260127025804_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 247,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Member.cs",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Entities\\Member.cs",
+              "RelativeDocumentMoniker": "Pcm.Domain\\Entities\\Member.cs",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Entities\\Member.cs",
+              "RelativeToolTip": "Pcm.Domain\\Entities\\Member.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T02:16:31.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20260127033209_AddBookingNavigation.cs",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Infrastructure\\Migrations\\20260127033209_AddBookingNavigation.cs",
+              "RelativeDocumentMoniker": "Pcm.Infrastructure\\Migrations\\20260127033209_AddBookingNavigation.cs",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Infrastructure\\Migrations\\20260127033209_AddBookingNavigation.cs",
+              "RelativeToolTip": "Pcm.Infrastructure\\Migrations\\20260127033209_AddBookingNavigation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T03:32:09.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Api\\Program.cs",
+              "RelativeDocumentMoniker": "Pcm.Api\\Program.cs",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Api\\Program.cs",
+              "RelativeToolTip": "Pcm.Api\\Program.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T02:06:33.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "Pcm.Api\\appsettings.json",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Api\\appsettings.json",
+              "RelativeToolTip": "Pcm.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-27T02:01:16.038Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Booking.cs",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Entities\\Booking.cs",
+              "RelativeDocumentMoniker": "Pcm.Domain\\Entities\\Booking.cs",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Entities\\Booking.cs",
+              "RelativeToolTip": "Pcm.Domain\\Entities\\Booking.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAswBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T02:18:44.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Pcm.Domain.csproj",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Pcm.Domain.csproj",
+              "RelativeDocumentMoniker": "Pcm.Domain\\Pcm.Domain.csproj",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Pcm.Domain.csproj",
+              "RelativeToolTip": "Pcm.Domain\\Pcm.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-27T02:14:29.832Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Pcm.Api.csproj",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Api\\Pcm.Api.csproj",
+              "RelativeDocumentMoniker": "Pcm.Api\\Pcm.Api.csproj",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Api\\Pcm.Api.csproj",
+              "RelativeToolTip": "Pcm.Api\\Pcm.Api.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-27T02:29:58.39Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Infrastructure\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Pcm.Infrastructure\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Infrastructure\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Pcm.Infrastructure\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T01:59:14.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20260127025804_InitialCreate.cs",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Infrastructure\\Migrations\\20260127025804_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Pcm.Infrastructure\\Migrations\\20260127025804_InitialCreate.cs",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Infrastructure\\Migrations\\20260127025804_InitialCreate.cs",
+              "RelativeToolTip": "Pcm.Infrastructure\\Migrations\\20260127025804_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T02:58:05.139Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Court.cs",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Entities\\Court.cs",
+              "RelativeDocumentMoniker": "Pcm.Domain\\Entities\\Court.cs",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Entities\\Court.cs",
+              "RelativeToolTip": "Pcm.Domain\\Entities\\Court.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T02:18:18.966Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Pcm.Application.csproj",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Application\\Pcm.Application.csproj",
+              "RelativeDocumentMoniker": "Pcm.Application\\Pcm.Application.csproj",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Application\\Pcm.Application.csproj",
+              "RelativeToolTip": "Pcm.Application\\Pcm.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-27T02:37:44.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "WalletTransaction.cs",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Entities\\WalletTransaction.cs",
+              "RelativeDocumentMoniker": "Pcm.Domain\\Entities\\WalletTransaction.cs",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Entities\\WalletTransaction.cs",
+              "RelativeToolTip": "Pcm.Domain\\Entities\\WalletTransaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T02:17:38.941Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Pcm.Infrastructure.csproj",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Infrastructure\\Pcm.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "Pcm.Infrastructure\\Pcm.Infrastructure.csproj",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Infrastructure\\Pcm.Infrastructure.csproj",
+              "RelativeToolTip": "Pcm.Infrastructure\\Pcm.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-27T01:56:31.318Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Tier.cs",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Enums\\Tier.cs",
+              "RelativeDocumentMoniker": "Pcm.Domain\\Enums\\Tier.cs",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Domain\\Enums\\Tier.cs",
+              "RelativeToolTip": "Pcm.Domain\\Enums\\Tier.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T02:17:06.026Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 153,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Api\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Pcm.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\HocTap\\MOBILE_FLUTTER_1771020711_NguyenManhTuan\\backend\\Pcm.Api\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Pcm.Api\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAADwv0oAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-27T04:40:53.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

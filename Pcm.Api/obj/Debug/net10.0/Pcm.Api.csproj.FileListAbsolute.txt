@@ -1,0 +1,7 @@
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Api\obj\Debug\net10.0\Pcm.Api.csproj.AssemblyReference.cache
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Api\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Api\obj\Debug\net10.0\Pcm.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Api\obj\Debug\net10.0\Pcm.Api.AssemblyInfoInputs.cache
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Api\obj\Debug\net10.0\Pcm.Api.AssemblyInfo.cs
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Api\obj\Debug\net10.0\Pcm.Api.csproj.CoreCompileInputs.cache
+C:\HocTap\MOBILE_FLUTTER_1771020711_NguyenManhTuan\backend\Pcm.Api\obj\Debug\net10.0\Pcm.Api.MvcApplicationPartsAssemblyInfo.cache
