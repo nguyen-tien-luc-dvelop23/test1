@@ -7,6 +7,21 @@ public static class DbSeeder
 {
     public static async Task SeedAsync(AppDbContext context)
     {
+        // Seed Courts if empty
+        if (!context.Courts.Any())
+        {
+            var courts = new List<Court>
+            {
+                new Court { Name = "Sân 1", Description = "Sân trong nhà, máy lạnh", PricePerHour = 100000, IsActive = true },
+                new Court { Name = "Sân 2", Description = "Sân trong nhà, máy lạnh", PricePerHour = 100000, IsActive = true },
+                new Court { Name = "Sân 3", Description = "Sân ngoài trời, có mái che", PricePerHour = 80000, IsActive = true },
+                new Court { Name = "Sân 4", Description = "Sân ngoài trời, có mái che", PricePerHour = 80000, IsActive = true },
+                new Court { Name = "Sân VIP", Description = "Sân cao cấp, đầy đủ tiện nghi", PricePerHour = 200000, IsActive = true },
+            };
+            context.Courts.AddRange(courts);
+            await context.SaveChangesAsync();
+        }
+
         var tournamentList = new List<Tournament>
         {
             new Tournament
