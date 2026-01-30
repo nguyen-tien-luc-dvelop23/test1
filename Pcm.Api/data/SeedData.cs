@@ -47,7 +47,7 @@ public static class SeedData
             });
             await db.SaveChangesAsync();
         }
-        else if (member.FullName != "LUC")
+        else if (member.FullName == "LUC" || member.FullName == "Nguyễn Văn A")
         {
             member.FullName = "Nguyễn Tiến Lực";
             await db.SaveChangesAsync();
