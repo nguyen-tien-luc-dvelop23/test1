@@ -131,10 +131,13 @@ if (app.Environment.IsDevelopment())
 }
 using (var scope = app.Services.CreateScope())
 {
+    // Auto-migrate database (creates tables if not exist)
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await context.Database.MigrateAsync();
+    
     await SeedData.SeedUserAsync(scope.ServiceProvider);
     
     // Auto seed tournaments
-    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     await DbSeeder.SeedAsync(context);
 }
 
