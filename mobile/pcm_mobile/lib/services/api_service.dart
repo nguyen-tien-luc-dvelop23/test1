@@ -118,6 +118,10 @@ class ApiService {
 
   // ===== COURTS & BOOKINGS =====
 
+  static Future<List<dynamic>> getCourts() async {
+    final token = await _getToken();
+    if (token == null) return [];
+
     print('🏟️ Fetching courts: $baseUrl/court');
     final response = await http.get(
       Uri.parse('$baseUrl/court'),
@@ -584,6 +588,7 @@ class ApiService {
     final token = await _getToken();
     if (token == null) return [];
 
+    try {
       print('⚔️ Fetching challenges: $baseUrl/match/challenges');
       final response = await http.get(
         Uri.parse('$baseUrl/match/challenges'),
