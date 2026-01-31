@@ -15,7 +15,7 @@ class ApiService {
 
   static Future<String?> login(String email, String password) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/Auth/login'),
+      Uri.parse('$baseUrl/auth/login'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'email': email, 'password': password}),
     );
@@ -38,7 +38,7 @@ class ApiService {
   }) async {
     print('📝 Registering user: $email');
     final response = await http.post(
-      Uri.parse('$baseUrl/Auth/register'),
+      Uri.parse('$baseUrl/auth/register'),
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
         'email': email,
@@ -62,7 +62,7 @@ class ApiService {
     if (token == null) return null;
 
     final res = await http.get(
-      Uri.parse('$baseUrl/Auth/me'),
+      Uri.parse('$baseUrl/auth/me'),
       headers: {'Authorization': 'Bearer $token'},
     );
     if (res.statusCode == 200) {
@@ -81,7 +81,7 @@ class ApiService {
     if (token == null) return false;
 
     final response = await http.put(
-      Uri.parse('$baseUrl/Member/$memberId'),
+      Uri.parse('$baseUrl/member/$memberId'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -103,7 +103,7 @@ class ApiService {
     if (token == null) return false;
 
     final response = await http.post(
-      Uri.parse('$baseUrl/Auth/change-password'),
+      Uri.parse('$baseUrl/auth/change-password'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -123,7 +123,7 @@ class ApiService {
     if (token == null) return [];
 
     final response = await http.get(
-      Uri.parse('$baseUrl/Court'),
+      Uri.parse('$baseUrl/court'),
       headers: {'Authorization': 'Bearer $token'},
     );
 
@@ -144,7 +144,7 @@ class ApiService {
     print('🏟️ Creating court: $name at $location, price: $pricePerHour');
 
     final response = await http.post(
-      Uri.parse('$baseUrl/Court'),
+      Uri.parse('$baseUrl/court'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -177,7 +177,7 @@ class ApiService {
     print('🏟️ Updating court $courtId: $name');
 
     final response = await http.put(
-      Uri.parse('$baseUrl/Court/$courtId'),
+      Uri.parse('$baseUrl/court/$courtId'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -205,7 +205,7 @@ class ApiService {
     print('🏟️ Deleting court $courtId');
 
     final response = await http.delete(
-      Uri.parse('$baseUrl/Court/$courtId'),
+      Uri.parse('$baseUrl/court/$courtId'),
       headers: {'Authorization': 'Bearer $token'},
     );
 
@@ -222,7 +222,7 @@ class ApiService {
     if (token == null) return [];
 
     final res = await http.get(
-      Uri.parse('$baseUrl/Member'),
+      Uri.parse('$baseUrl/member'),
       headers: {'Authorization': 'Bearer $token'},
     );
     if (res.statusCode == 200) {
@@ -240,7 +240,7 @@ class ApiService {
     if (token == null) return [];
 
     final uri = Uri.parse(
-      '$baseUrl/Booking/calendar?from=${from.toIso8601String()}&to=${to.toIso8601String()}',
+      '$baseUrl/booking/calendar?from=${from.toIso8601String()}&to=${to.toIso8601String()}',
     );
 
     final res = await http.get(
@@ -259,7 +259,7 @@ class ApiService {
     if (token == null) return [];
 
     final res = await http.get(
-      Uri.parse('$baseUrl/Booking/my-bookings'),
+      Uri.parse('$baseUrl/booking/my-bookings'),
       headers: {'Authorization': 'Bearer $token'},
     );
 
@@ -283,7 +283,7 @@ class ApiService {
     print('📅 Creating booking: Court=$courtId, Start=$startTime, End=$endTime');
     
     final response = await http.post(
-      Uri.parse('$baseUrl/Booking'),
+      Uri.parse('$baseUrl/booking'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -308,7 +308,7 @@ class ApiService {
     if (token == null) return false;
 
     final response = await http.post(
-      Uri.parse('$baseUrl/Booking/cancel/$id'),
+      Uri.parse('$baseUrl/booking/cancel/$id'),
       headers: {'Authorization': 'Bearer $token'},
     );
     return response.statusCode == 200;
@@ -324,7 +324,7 @@ class ApiService {
     if (token == null) return false;
 
     final res = await http.post(
-      Uri.parse('$baseUrl/Wallet/deposit'),
+      Uri.parse('$baseUrl/wallet/deposit'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -340,7 +340,7 @@ class ApiService {
     if (token == null) return [];
 
     final res = await http.get(
-      Uri.parse('$baseUrl/Wallet/transactions'),
+      Uri.parse('$baseUrl/wallet/transactions'),
       headers: {'Authorization': 'Bearer $token'},
     );
     if (res.statusCode == 200) {
@@ -354,7 +354,7 @@ class ApiService {
     if (token == null) return [];
 
     final res = await http.get(
-      Uri.parse('$baseUrl/Wallet/admin/all'),
+      Uri.parse('$baseUrl/wallet/admin/all'),
       headers: {'Authorization': 'Bearer $token'},
     );
     if (res.statusCode == 200) {
@@ -367,7 +367,7 @@ class ApiService {
     final token = await _getToken();
     if (token == null) return [];
 
-    var url = '$baseUrl/Tournament';
+    var url = '$baseUrl/tournament';
     if (status != null) url += '?status=$status';
 
     final res = await http.get(
@@ -396,7 +396,7 @@ class ApiService {
     print('🏆 Creating tournament: $name');
 
     final response = await http.post(
-      Uri.parse('$baseUrl/Tournament'),
+      Uri.parse('$baseUrl/tournament'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -436,7 +436,7 @@ class ApiService {
     print('🏆 Updating tournament $tournamentId: $name');
 
     final response = await http.put(
-      Uri.parse('$baseUrl/Tournament/$tournamentId'),
+      Uri.parse('$baseUrl/tournament/$tournamentId'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -463,7 +463,7 @@ class ApiService {
     print('🏆 Deleting tournament $tournamentId');
 
     final response = await http.delete(
-      Uri.parse('$baseUrl/Tournament/$tournamentId'),
+      Uri.parse('$baseUrl/tournament/$tournamentId'),
       headers: {'Authorization': 'Bearer $token'},
     );
 
@@ -480,7 +480,7 @@ class ApiService {
     if (token == null) return false;
 
     final res = await http.post(
-      Uri.parse('$baseUrl/Tournament/$tournamentId/join'),
+      Uri.parse('$baseUrl/tournament/$tournamentId/join'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',
@@ -497,7 +497,7 @@ class ApiService {
     if (token == null) return [];
 
     final res = await http.get(
-      Uri.parse('$baseUrl/Booking'),
+      Uri.parse('$baseUrl/booking'),
       headers: {'Authorization': 'Bearer $token'},
     );
     if (res.statusCode == 200) {
@@ -511,7 +511,7 @@ class ApiService {
     if (token == null) return [];
 
     final res = await http.get(
-      Uri.parse('$baseUrl/Notification'),
+      Uri.parse('$baseUrl/notification'),
       headers: {'Authorization': 'Bearer $token'},
     );
     if (res.statusCode == 200) {
@@ -527,7 +527,7 @@ class ApiService {
     if (token == null) return 0;
 
     final res = await http.get(
-      Uri.parse('$baseUrl/Notification'),
+      Uri.parse('$baseUrl/notification'),
       headers: {'Authorization': 'Bearer $token'},
     );
     if (res.statusCode == 200) {
@@ -621,7 +621,7 @@ class ApiService {
 
     try {
       final response = await http.get(
-        Uri.parse('$baseUrl/Member?search=$query&pageSize=10'),
+        Uri.parse('$baseUrl/member?search=$query&pageSize=10'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
@@ -652,7 +652,7 @@ class ApiService {
     if (token == null) return false;
 
     final res = await http.post(
-      Uri.parse('$baseUrl/Notification/read-all'),
+      Uri.parse('$baseUrl/notification/read-all'),
       headers: {'Authorization': 'Bearer $token'},
     );
     return res.statusCode == 200;

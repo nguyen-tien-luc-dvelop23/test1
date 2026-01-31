@@ -94,6 +94,13 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader());
 });
 
+// Configure lowercase URLs
+builder.Services.Configure<RouteOptions>(options => 
+{
+    options.LowercaseUrls = true;
+    options.LowercaseQueryStrings = true;
+});
+
 var app = builder.Build();
 
 // =======================
@@ -107,10 +114,19 @@ if (app.Environment.IsDevelopment())
 }
 using (var scope = app.Services.CreateScope())
 {
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    
+    // Ensure database is up to date (Migration)
+    // This is critical for Render deployments where schema might lag behind code.
+    try {
+        await context.Database.MigrateAsync();
+    } catch (Exception ex) {
+        Console.WriteLine($"Migration failed: {ex.Message}");
+    }
+
     await SeedData.SeedUserAsync(scope.ServiceProvider);
     
-    // Auto seed tournaments
-    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    // Auto seed tournaments/courts
     await DbSeeder.SeedAsync(context);
 }
 

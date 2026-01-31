@@ -9,7 +9,7 @@ using Pcm.Infrastructure.Data;
 namespace Pcm.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/match")]
     [Authorize]
     public class MatchController : ControllerBase
     {
