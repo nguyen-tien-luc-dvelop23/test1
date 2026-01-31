@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../services/api_service.dart';
+import 'register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,7 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _emailCtrl = TextEditingController(text: 'user1@example.com');
+  final _emailCtrl = TextEditingController(text: 'luc@gmail.com');
   final _passwordCtrl = TextEditingController(text: '123456');
   bool _obscure = true;
   bool _loading = false;
@@ -161,12 +162,33 @@ class _LoginScreenState extends State<LoginScreen> {
                                   : const Text('Vào ứng dụng'),
                             ),
                           ),
+                          const SizedBox(height: 16),
+                          OutlinedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => const RegisterScreen(),
+                                ),
+                              );
+                            },
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: scheme.primary,
+                              side: BorderSide(color: scheme.primary),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                            ),
+                            child: const Text('Đăng ký tài khoản mới'),
+                          ),
                           const SizedBox(height: 10),
-                          Text(
-                            'Dữ liệu sẽ gọi trực tiếp API /api/Auth/login (MySQL). Hãy tạo user bằng /api/Auth/register trong Swagger trước.',
-                            style: TextStyle(
-                              color: scheme.onSurfaceVariant,
-                              fontSize: 12,
+                          Center(
+                            child: Text(
+                              'Hoặc đăng nhập với tài khoản demo: luc@gmail.com',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: scheme.onSurfaceVariant,
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                         ],

@@ -2,10 +2,14 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/intl.dart';
 
 class ApiService {
-  // ✅ Cho Flutter web (Chrome) khi backend listen http://localhost:5201
-  static const String baseUrl = 'http://localhost:5201/api';
+  // ✅ Production API on Render
+  // Change to localhost:5201 to use local backend with court CRUD
+  // static const String baseUrl = 'http://localhost:5201/api';
+  // static const String baseUrl = 'http://10.0.2.2:5201/api'; // Emulator
+  static const String baseUrl = 'https://test1-wxri.onrender.com/api';
 
   // ===== AUTH =====
 
@@ -30,7 +34,9 @@ class ApiService {
     required String email,
     required String password,
     required String fullName,
+    required String phoneNumber,
   }) async {
+    print('📝 Registering user: $email');
     final response = await http.post(
       Uri.parse('$baseUrl/Auth/register'),
       headers: {'Content-Type': 'application/json'},
@@ -38,9 +44,16 @@ class ApiService {
         'email': email,
         'password': password,
         'fullName': fullName,
+        'phoneNumber': phoneNumber,
       }),
     );
-    return response.statusCode == 200;
+
+    print('📝 Register response: ${response.statusCode}');
+    if (response.statusCode != 200 && response.statusCode != 201) {
+      print('❌ Register failed: ${response.body}');
+    }
+
+    return response.statusCode == 200 || response.statusCode == 201;
   }
 
   static Future<Map<String, dynamic>?> me() async {
@@ -58,6 +71,51 @@ class ApiService {
     return null;
   }
 
+  static Future<bool> updateProfile({
+    required int memberId,
+    required String fullName,
+    String? phoneNumber,
+    String? avatarUrl,
+  }) async {
+    final token = await _getToken();
+    if (token == null) return false;
+
+    final response = await http.put(
+      Uri.parse('$baseUrl/Member/$memberId'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({
+        'fullName': fullName,
+        'phoneNumber': phoneNumber,
+        'avatarUrl': avatarUrl,
+      }),
+    );
+    return response.statusCode == 200 || response.statusCode == 204;
+  }
+
+  static Future<bool> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    final token = await _getToken();
+    if (token == null) return false;
+
+    final response = await http.post(
+      Uri.parse('$baseUrl/Auth/change-password'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({
+        'currentPassword': currentPassword,
+        'newPassword': newPassword,
+      }),
+    );
+    return response.statusCode == 200;
+  }
+
   // ===== COURTS & BOOKINGS =====
 
   static Future<List<dynamic>> getCourts() async {
@@ -73,6 +131,90 @@ class ApiService {
       return jsonDecode(response.body) as List<dynamic>;
     }
     return [];
+  }
+
+  static Future<bool> createCourt({
+    required String name,
+    required String location,
+    required double pricePerHour,
+  }) async {
+    final token = await _getToken();
+    if (token == null) return false;
+
+    print('🏟️ Creating court: $name at $location, price: $pricePerHour');
+
+    final response = await http.post(
+      Uri.parse('$baseUrl/Court'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({
+        'name': name,
+        'description': location, // Backend uses 'description' not 'location'
+        'pricePerHour': pricePerHour,
+        'isActive': true,
+      }),
+    );
+
+    print('🏟️ Create court response: ${response.statusCode}');
+    if (response.statusCode != 200 && response.statusCode != 201) {
+      print('❌ Create court failed: ${response.body}');
+    }
+
+    return response.statusCode == 200 || response.statusCode == 201;
+  }
+
+  static Future<bool> updateCourt({
+    required int courtId,
+    required String name,
+    required String location,
+    required double pricePerHour,
+  }) async {
+    final token = await _getToken();
+    if (token == null) return false;
+
+    print('🏟️ Updating court $courtId: $name');
+
+    final response = await http.put(
+      Uri.parse('$baseUrl/Court/$courtId'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({
+        'name': name,
+        'description': location, // Backend uses 'description'
+        'pricePerHour': pricePerHour,
+        'isActive': true,
+      }),
+    );
+
+    print('🏟️ Update court response: ${response.statusCode}');
+    if (response.statusCode != 200 && response.statusCode != 204) {
+      print('❌ Update court failed: ${response.body}');
+    }
+
+    return response.statusCode == 200 || response.statusCode == 204;
+  }
+
+  static Future<bool> deleteCourt(int courtId) async {
+    final token = await _getToken();
+    if (token == null) return false;
+
+    print('🏟️ Deleting court $courtId');
+
+    final response = await http.delete(
+      Uri.parse('$baseUrl/Court/$courtId'),
+      headers: {'Authorization': 'Bearer $token'},
+    );
+
+    print('🏟️ Delete court response: ${response.statusCode}');
+    if (response.statusCode != 200 && response.statusCode != 204) {
+      print('❌ Delete court failed: ${response.body}');
+    }
+
+    return response.statusCode == 200 || response.statusCode == 204;
   }
 
   static Future<List<dynamic>> getMembers() async {
@@ -133,8 +275,13 @@ class ApiService {
     required DateTime endTime,
   }) async {
     final token = await _getToken();
-    if (token == null) return false;
+    if (token == null) {
+      print('❌ createBooking: No token available');
+      return false;
+    }
 
+    print('📅 Creating booking: Court=$courtId, Start=$startTime, End=$endTime');
+    
     final response = await http.post(
       Uri.parse('$baseUrl/Booking'),
       headers: {
@@ -147,6 +294,11 @@ class ApiService {
         'endTime': endTime.toIso8601String(),
       }),
     );
+
+    print('📅 Booking response: ${response.statusCode}');
+    if (response.statusCode != 200) {
+      print('❌ Booking failed: ${response.body}');
+    }
 
     return response.statusCode == 200;
   }
@@ -229,6 +381,96 @@ class ApiService {
     return [];
   }
 
+  static Future<bool> createTournament({
+    required String name,
+    String? description,
+    DateTime? startDate,
+    DateTime? endDate,
+    required double entryFee,
+    required int maxPlayers,
+    required String type,
+  }) async {
+    final token = await _getToken();
+    if (token == null) return false;
+
+    print('🏆 Creating tournament: $name');
+
+    final response = await http.post(
+      Uri.parse('$baseUrl/Tournament'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({
+        'name': name,
+        'description': description ?? '',
+        'startDate': startDate?.toIso8601String(),
+        'endDate': endDate?.toIso8601String(),
+        'entryFee': entryFee,
+        'maxPlayers': maxPlayers,
+        'type': type,
+      }),
+    );
+
+    print('🏆 Create tournament response: ${response.statusCode}');
+    if (response.statusCode != 200 && response.statusCode != 201) {
+      print('❌ Create tournament failed: ${response.body}');
+    }
+
+    return response.statusCode == 200 || response.statusCode == 201;
+  }
+
+  static Future<bool> updateTournament({
+    required int tournamentId,
+    required String name,
+    String? description,
+    DateTime? startDate,
+    DateTime? endDate,
+    required double entryFee,
+    required int maxPlayers,
+    required String type,
+  }) async {
+    final token = await _getToken();
+    if (token == null) return false;
+
+    print('🏆 Updating tournament $tournamentId: $name');
+
+    final response = await http.put(
+      Uri.parse('$baseUrl/Tournament/$tournamentId'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: jsonEncode({
+        'name': name,
+        'description': description ?? '',
+        'startDate': startDate?.toIso8601String(),
+        'endDate': endDate?.toIso8601String(),
+        'entryFee': entryFee,
+        'maxPlayers': maxPlayers,
+        'type': type,
+      }),
+    );
+
+    print('🏆 Update tournament response: ${response.statusCode}');
+    return response.statusCode == 200 || response.statusCode == 204;
+  }
+
+  static Future<bool> deleteTournament(int tournamentId) async {
+    final token = await _getToken();
+    if (token == null) return false;
+
+    print('🏆 Deleting tournament $tournamentId');
+
+    final response = await http.delete(
+      Uri.parse('$baseUrl/Tournament/$tournamentId'),
+      headers: {'Authorization': 'Bearer $token'},
+    );
+
+    print('🏆 Delete tournament response: ${response.statusCode}');
+    return response.statusCode == 200 || response.statusCode == 204;
+  }
+
   static Future<bool> joinTournament({
     required int tournamentId,
     required String? groupName,
@@ -246,38 +488,6 @@ class ApiService {
       body: jsonEncode({'groupName': groupName, 'teamSize': teamSize}),
     );
     return res.statusCode == 200;
-  }
-
-  static Future<bool> createTournament({
-    required String name,
-    required String? description,
-    required DateTime? startDate,
-    required DateTime? endDate,
-    required double entryFee,
-    required int maxPlayers,
-    required String type,
-  }) async {
-    final token = await _getToken();
-    if (token == null) return false;
-
-    final response = await http.post(
-      Uri.parse('$baseUrl/Tournament'),
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-      body: jsonEncode({
-        'name': name,
-        'description': description,
-        'startDate': startDate?.toIso8601String(),
-        'endDate': endDate?.toIso8601String(),
-        'entryFee': entryFee,
-        'maxPlayers': maxPlayers,
-        'type': type,
-      }),
-    );
-
-    return response.statusCode == 200;
   }
 
   // ===== ADMIN (đơn giản) =====
@@ -306,7 +516,8 @@ class ApiService {
     );
     if (res.statusCode == 200) {
       final body = jsonDecode(res.body) as Map<String, dynamic>;
-      return body['items'] as List<dynamic>;
+      // Support both casing styles
+      return (body['items'] ?? body['Items'] ?? []) as List<dynamic>;
     }
     return [];
   }
@@ -321,12 +532,128 @@ class ApiService {
     );
     if (res.statusCode == 200) {
       final body = jsonDecode(res.body) as Map<String, dynamic>;
-      return body['unreadCount'] as int? ?? 0;
+      return (body['unreadCount'] ?? body['UnreadCount'] ?? 0) as int;
     }
     return 0;
   }
 
+
+  // =================
+  // Challenges
+  // =================
+
+  static Future<String?> createChallenge({int? opponentId, required DateTime scheduledTime}) async {
+    final token = await _getToken();
+    if (token == null) return 'Not authenticated';
+
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/Match/challenge'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: jsonEncode({
+          'opponentId': opponentId,
+          'scheduledTime': scheduledTime.toIso8601String(),
+        }),
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return null; // Success
+      } else {
+        print('❌ Create Challenge Failed: ${response.statusCode} - ${response.body}');
+        return 'Failed: ${response.statusCode} ${response.body}';
+      }
+    } catch (e) {
+      return 'Network Error: $e';
+    }
+  }
+
+  static Future<List<dynamic>> getChallenges() async {
+    final token = await _getToken();
+    if (token == null) return [];
+
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/Match/challenges'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      }
+    } catch (e) {
+      print('Error fetching challenges: $e');
+    }
+    return [];
+  }
+
+  static Future<String?> acceptChallenge(int matchId) async {
+    final token = await _getToken();
+    if (token == null) return 'Not authenticated';
+
+    final response = await http.post(
+      Uri.parse('$baseUrl/Match/$matchId/accept'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return null; // Success
+    } else {
+      return 'Failed: ${response.statusCode} ${response.body}';
+    }
+  }
+
+
+  static Future<List<dynamic>> searchMembers(String query) async {
+    final token = await _getToken();
+    if (token == null) return [];
+
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/Member?search=$query&pageSize=10'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        return data['items'] as List<dynamic>;
+      }
+    } catch (e) {
+      print('Error searching members: $e');
+    }
+    return [];
+  }
+
   // ===== Helpers =====
+
+  // ===== Unified Notifications =====
+
+  // Now fully Server-Side Managed ("Real" Notifications)
+  static Future<List<dynamic>> getUnifiedNotifications() async {
+    return await getNotifications();
+  }
+
+  static Future<bool> markAllNotificationsAsRead() async {
+    final token = await _getToken();
+    if (token == null) return false;
+
+    final res = await http.post(
+      Uri.parse('$baseUrl/Notification/read-all'),
+      headers: {'Authorization': 'Bearer $token'},
+    );
+    return res.statusCode == 200;
+  }
 
   static Future<String?> _getToken() async {
     final prefs = await SharedPreferences.getInstance();

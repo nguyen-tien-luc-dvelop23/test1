@@ -334,7 +334,7 @@ namespace Pcm.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("TournamentId")
+                    b.Property<int?>("TournamentId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
@@ -639,9 +639,7 @@ namespace Pcm.Infrastructure.Migrations
 
                     b.HasOne("Pcm.Domain.Entities.Tournament", "Tournament")
                         .WithMany("Matches")
-                        .HasForeignKey("TournamentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TournamentId");
 
                     b.HasOne("Pcm.Domain.Entities.Member", "Winner")
                         .WithMany()

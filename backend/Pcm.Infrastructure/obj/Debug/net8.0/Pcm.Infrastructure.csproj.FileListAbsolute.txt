@@ -30,6 +30,7 @@ D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Infrastructure\obj\Debug\net8.0\Pcm.Inf
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Infrastructure\obj\Debug\net8.0\Pcm.Infrastructure.AssemblyInfoInputs.cache
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Infrastructure\obj\Debug\net8.0\Pcm.Infrastructure.AssemblyInfo.cs
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Infrastructure\obj\Debug\net8.0\Pcm.Infrastructure.csproj.CoreCompileInputs.cache
+D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Infrastructure\obj\Debug\net8.0\Pcm.Infrastructure.sourcelink.json
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Infrastructure\obj\Debug\net8.0\Pcm.Infr.AC9A9251.Up2Date
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Infrastructure\obj\Debug\net8.0\Pcm.Infrastructure.dll
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Infrastructure\obj\Debug\net8.0\refint\Pcm.Infrastructure.dll

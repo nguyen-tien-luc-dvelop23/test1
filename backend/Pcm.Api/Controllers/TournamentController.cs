@@ -80,6 +80,40 @@ namespace Pcm.Api.Controllers
             return Ok(tournament);
         }
 
+        // PUT: api/tournament/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] CreateTournamentRequest request)
+        {
+            var tournament = await _context.Tournaments.FindAsync(id);
+            if (tournament == null)
+                return NotFound();
+
+            tournament.Name = request.Name;
+            tournament.Description = request.Description;
+            tournament.StartDate = request.StartDate;
+            tournament.EndDate = request.EndDate;
+            tournament.EntryFee = request.EntryFee;
+            tournament.MaxPlayers = request.MaxPlayers;
+            tournament.Type = request.Type;
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        // DELETE: api/tournament/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var tournament = await _context.Tournaments.FindAsync(id);
+            if (tournament == null)
+                return NotFound();
+
+            _context.Tournaments.Remove(tournament);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
         // POST: api/tournament/{id}/join
         [HttpPost("{id:int}/join")]
         public async Task<IActionResult> Join(int id, [FromBody] JoinTournamentRequest request)

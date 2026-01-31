@@ -51,6 +51,19 @@ namespace Pcm.Api.Controllers
             };
 
             _context.WalletTransactions.Add(transaction);
+
+            // Create Notification
+            var notification = new Notification
+            {
+                MemberId = member.Id,
+                Title = "Deposit Successful",
+                Message = $"You have successfully deposited {request.Amount:N0} VND into your wallet.",
+                Type = "Deposit",
+                IsRead = false,
+                CreatedAt = DateTime.UtcNow
+            };
+            _context.Notifications.Add(notification);
+
             await _context.SaveChangesAsync();
 
             return Ok(new

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../core/session/session_provider.dart';
+import '../../../core/notifications/notification_provider.dart';
 import '../../../services/api_service.dart';
 import 'my_bookings_screen.dart';
 
@@ -29,12 +30,21 @@ class _BookingScreenState extends ConsumerState<BookingScreen> {
 
   Future<void> _loadInitial() async {
     setState(() => _loading = true);
+    print('🏟️ Loading courts...');
     final courts = await ApiService.getCourts();
+    print('🏟️ Courts loaded: ${courts.length} courts');
+    if (courts.isNotEmpty) {
+      print('🏟️ First court: ${courts.first}');
+    }
+    
     final day = DateTime.now();
+    print('📅 Loading bookings for: $day');
     final bookings = await ApiService.getBookingsCalendar(
       from: DateTime(day.year, day.month, day.day, 0, 0),
       to: DateTime(day.year, day.month, day.day, 23, 59),
     );
+    print('📅 Bookings loaded: ${bookings.length} bookings');
+    
     if (!mounted) return;
     setState(() {
       _courts = courts;
@@ -43,6 +53,7 @@ class _BookingScreenState extends ConsumerState<BookingScreen> {
       _bookings = bookings;
       _loading = false;
     });
+    print('✅ Initial load complete. Selected court: $_selectedCourtId');
   }
 
   Future<void> _refreshBookings(DateTime day) async {
@@ -213,9 +224,15 @@ class _BookingScreenState extends ConsumerState<BookingScreen> {
     final startHour = 6;
     final endHour = 22;
     final selectedCourt = _selectedCourtId;
-    if (selectedCourt == null) return [];
+    
+    print('🎰 Generating slots for court: $selectedCourt, day: $day');
+    
+    if (selectedCourt == null) {
+      print('❌ No court selected, returning empty slots');
+      return [];
+    }
 
-    return List.generate(endHour - startHour, (i) {
+    final slots = List.generate(endHour - startHour, (i) {
       final start = DateTime(day.year, day.month, day.day, startHour + i, 0);
       final end = start.add(const Duration(hours: 1));
       final overlap = _bookings.where((b) {
@@ -232,6 +249,9 @@ class _BookingScreenState extends ConsumerState<BookingScreen> {
 
       return _Slot(start: start, end: end, state: state);
     });
+    
+    print('🎰 Generated ${slots.length} slots');
+    return slots;
   }
 
   Future<void> _bookSlot(DateTime start, DateTime end) async {
@@ -284,6 +304,8 @@ class _BookingScreenState extends ConsumerState<BookingScreen> {
       await _refreshBookings(start);
       // Refresh session để update số dư ví
       ref.read(sessionProvider.notifier).refresh();
+      // Refresh notification count to show new notification
+      ref.read(notificationCountProvider.notifier).refresh();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

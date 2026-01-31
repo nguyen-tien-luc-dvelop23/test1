@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/session/session_provider.dart';
+import '../../../core/notifications/notification_provider.dart';
 import '../../admin/presentation/admin_dashboard_screen.dart';
 import '../../home/presentation/home_screen.dart';
 import '../../booking/presentation/booking_screen.dart';
@@ -22,10 +23,14 @@ class AppShell extends ConsumerStatefulWidget {
 class _AppShellState extends ConsumerState<AppShell> {
   int _index = 0;
 
+  void _changeTab(int index) {
+    setState(() => _index = index);
+  }
+
   @override
   Widget build(BuildContext context) {
     final pages = <Widget>[
-      const HomeScreen(),
+      HomeScreen(onTabChange: _changeTab),
       const BookingScreen(),
       const TournamentScreen(),
       const WalletScreen(),
@@ -38,26 +43,41 @@ class _AppShellState extends ConsumerState<AppShell> {
     final balance = session.valueOrNull?.walletBalance ?? 0;
     final isAdmin = session.valueOrNull?.isAdmin ?? false;
 
+    final avatarUrl = session.valueOrNull?.avatarUrl;
+
     return Scaffold(
       drawer: isAdmin ? const _AdminDrawer() : null,
       appBar: AppBar(
         title: Row(
           children: [
-            const CircleAvatar(radius: 16, child: Icon(Icons.person, size: 18)),
-            const SizedBox(width: 10),
+            Container(
+              padding: const EdgeInsets.all(1.5),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.green, width: 2),
+              ),
+              child: CircleAvatar(
+                radius: 18,
+                backgroundColor: Colors.white,
+                backgroundImage: avatarUrl != null && avatarUrl.isNotEmpty
+                    ? NetworkImage(avatarUrl)
+                    : null,
+                child: avatarUrl == null || avatarUrl.isEmpty
+                    ? const Icon(Icons.person, size: 20, color: Colors.grey)
+                    : null,
+              ),
+            ),
+            const SizedBox(width: 12),
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(fullName, maxLines: 1, overflow: TextOverflow.ellipsis),
-                  Text(
-                    'Số dư: ${balance.toStringAsFixed(0)}₫',
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
+              child: Text(
+                'Xin chào, $fullName! 👋',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
             IconButton(
@@ -114,30 +134,13 @@ class _AppShellState extends ConsumerState<AppShell> {
   }
 }
 
-class _NotificationBell extends StatefulWidget {
-  @override
-  State<_NotificationBell> createState() => _NotificationBellState();
-}
-
-class _NotificationBellState extends State<_NotificationBell> {
-  int _count = 0;
+class _NotificationBell extends ConsumerWidget {
+  const _NotificationBell();
 
   @override
-  void initState() {
-    super.initState();
-    _loadCount();
-  }
-
-  // Polling đơn giản mỗi khi build lại hoặc timer (ở đây gọi 1 lần init)
-  // Thực tế nên dùng Timer hoặc SignalR để update real-time
-  Future<void> _loadCount() async {
-    final c = await ApiService.getUnreadNotificationCount();
-    if (mounted) setState(() => _count = c);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return _BellWithBadge(count: _count);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final count = ref.watch(notificationCountProvider);
+    return _BellWithBadge(count: count);
   }
 }
 

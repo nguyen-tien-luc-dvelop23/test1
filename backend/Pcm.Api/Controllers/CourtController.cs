@@ -23,5 +23,48 @@ namespace Pcm.Api.Controllers
             var courts = await _context.Courts.ToListAsync();
             return Ok(courts);
         }
+
+        // POST: api/court
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] Court court)
+        {
+            if (court == null)
+                return BadRequest("Court data is required");
+
+            _context.Courts.Add(court);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetAll), new { id = court.Id }, court);
+        }
+
+        // PUT: api/court/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] Court court)
+        {
+            var existing = await _context.Courts.FindAsync(id);
+            if (existing == null)
+                return NotFound();
+
+            existing.Name = court.Name;
+            existing.Description = court.Description;
+            existing.PricePerHour = court.PricePerHour;
+
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        // DELETE: api/court/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var court = await _context.Courts.FindAsync(id);
+            if (court == null)
+                return NotFound();
+
+            _context.Courts.Remove(court);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }

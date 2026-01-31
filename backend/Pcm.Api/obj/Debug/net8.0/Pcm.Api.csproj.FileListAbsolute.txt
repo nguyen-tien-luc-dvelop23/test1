@@ -239,6 +239,7 @@ D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Api\obj\Debug\net8.0\Pcm.Api.AssemblyIn
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Api\obj\Debug\net8.0\Pcm.Api.csproj.CoreCompileInputs.cache
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Api\obj\Debug\net8.0\Pcm.Api.MvcApplicationPartsAssemblyInfo.cs
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Api\obj\Debug\net8.0\Pcm.Api.MvcApplicationPartsAssemblyInfo.cache
+D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Api\obj\Debug\net8.0\Pcm.Api.sourcelink.json
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Api\obj\Debug\net8.0\staticwebassets.build.json
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Api\obj\Debug\net8.0\staticwebassets.development.json
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Api\obj\Debug\net8.0\staticwebassets\msbuild.Pcm.Api.Microsoft.AspNetCore.StaticWebAssets.props

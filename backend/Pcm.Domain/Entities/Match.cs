@@ -6,8 +6,8 @@ public class Match
 {
     public int Id { get; set; }
     
-    public int TournamentId { get; set; }
-    public Tournament Tournament { get; set; } = null!;
+    public int? TournamentId { get; set; }
+    public Tournament? Tournament { get; set; }
     
     public int Round { get; set; }
     public int BracketPosition { get; set; }

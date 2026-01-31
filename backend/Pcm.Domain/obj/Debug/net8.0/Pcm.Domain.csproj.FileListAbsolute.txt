@@ -16,6 +16,7 @@ D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Domain\obj\Debug\net8.0\Pcm.Domain.Gene
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Domain\obj\Debug\net8.0\Pcm.Domain.AssemblyInfoInputs.cache
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Domain\obj\Debug\net8.0\Pcm.Domain.AssemblyInfo.cs
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Domain\obj\Debug\net8.0\Pcm.Domain.csproj.CoreCompileInputs.cache
+D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Domain\obj\Debug\net8.0\Pcm.Domain.sourcelink.json
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Domain\obj\Debug\net8.0\Pcm.Domain.dll
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Domain\obj\Debug\net8.0\refint\Pcm.Domain.dll
 D:\MOBILE_FLUTTER_1771020440\backend\Pcm.Domain\obj\Debug\net8.0\Pcm.Domain.pdb

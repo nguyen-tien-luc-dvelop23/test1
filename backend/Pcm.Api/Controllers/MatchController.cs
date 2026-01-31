@@ -35,43 +35,84 @@ namespace Pcm.Api.Controllers
             return Ok(match);
         }
 
-        // POST: api/match/{id}/result
-        [HttpPost("{id:int}/result")]
-        public async Task<IActionResult> UpdateResult(int id, [FromBody] UpdateMatchResultRequest request)
+        // POST: api/match/challenge
+        [HttpPost("challenge")]
+        public async Task<IActionResult> CreateChallenge([FromBody] CreateChallengeRequest request)
         {
-            var match = await _context.Matches.FindAsync(id);
-            if (match == null) return NotFound();
+            var userIdStr = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value 
+                            ?? User.FindFirst(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Sub)?.Value;
 
-            // Check permissions (only Referee or Admin?)
-            // For now, allow logged in users for demo simplicity
-
-            match.ScorePlayer1 = request.ScorePlayer1;
-            match.ScorePlayer2 = request.ScorePlayer2;
-            match.WinnerId = request.WinnerId;
-            match.Status = "Finished";
-            match.UpdatedAt = DateTime.Now;
-
-            // TODO: Advance bracket logic (find next match, set player1 or player2 slot)
-            // if (match.NextMatchId != null) { ... }
-
-            await _context.SaveChangesAsync();
-
-            // SignalR Broadcast
-            await _hubContext.Clients.All.SendAsync("UpdateMatchScore", new
-            {
-                MatchId = match.Id,
-                ScorePlayer1 = match.ScorePlayer1,
-                ScorePlayer2 = match.ScorePlayer2,
-                WinnerId = match.WinnerId,
-                Status = match.Status
-            });
+            if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out int memberId)) 
+                return Unauthorized("Invalid user token");
             
-            // Also notify specific group if used
-            await _hubContext.Clients.Group($"Match_{match.Id}").SendAsync("MatchUpdate", match);
+            var member = await _context.Members.FindAsync(memberId);
+            if (member == null) return Unauthorized($"Member profile not found (ID: {memberId})");
+
+            var match = new Match
+            {
+                Player1Id = member.Id,
+                Player2Id = request.OpponentId,
+                ScheduledTime = request.ScheduledTime,
+                Status = request.OpponentId == null ? "Open" : "Pending", // Open if no opponent, Pending if directed
+                TournamentId = null, // Standalone match
+                Round = 0,
+                BracketPosition = 0
+            };
+
+            _context.Matches.Add(match);
+            await _context.SaveChangesAsync();
 
             return Ok(match);
         }
-    }
 
+        // GET: api/match/challenges
+        [HttpGet("challenges")]
+        public async Task<IActionResult> GetChallenges()
+        {
+            var matches = await _context.Matches
+                .Include(m => m.Player1)
+                .Include(m => m.Player2)
+                .Where(m => m.TournamentId == null && (m.Status == "Open" || m.Status == "Pending" || m.Status == "Scheduled"))
+                .OrderByDescending(m => m.CreatedAt)
+                .ToListAsync();
+
+            return Ok(matches);
+        }
+        
+        // POST: api/match/{id}/accept
+        [HttpPost("{id:int}/accept")]
+        public async Task<IActionResult> AcceptChallenge(int id)
+        {
+            var userIdStr = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value 
+                            ?? User.FindFirst(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Sub)?.Value;
+
+            if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out int memberId)) 
+                return Unauthorized("Invalid user token");
+            
+            var member = await _context.Members.FindAsync(memberId);
+            if (member == null) return Unauthorized($"Member profile not found (ID: {memberId})");
+
+            var match = await _context.Matches.FindAsync(id);
+            if (match == null) return NotFound();
+            
+            if (match.Status != "Open" && match.Status != "Pending")
+                return BadRequest("Match is not open for acceptance");
+
+            if (match.Player2Id != null && match.Player2Id != member.Id)
+                return BadRequest("This challenge is not for you");
+            
+            if (match.Player1Id == member.Id)
+                return BadRequest("Cannot accept your own challenge");
+
+            match.Player2Id = member.Id;
+            match.Status = "Scheduled";
+            match.UpdatedAt = DateTime.Now;
+            
+            await _context.SaveChangesAsync();
+            return Ok(match);
+        }
+    }
+    
     public record UpdateMatchResultRequest(string ScorePlayer1, string ScorePlayer2, int WinnerId);
+    public record CreateChallengeRequest(int? OpponentId, DateTime ScheduledTime);
 }
