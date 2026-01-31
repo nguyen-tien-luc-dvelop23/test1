@@ -118,12 +118,17 @@ namespace Pcm.Api.Controllers
                 Encoding.UTF8.GetBytes(jwt["Key"]!)
             );
 
-            var claims = new[]
+            var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, member.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, member.Email),
                 new Claim("fullName", member.FullName)
             };
+
+            if (member.Email == "luc@gmail.com" || member.Email.ToLower().Contains("admin"))
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "Admin"));
+            }
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 

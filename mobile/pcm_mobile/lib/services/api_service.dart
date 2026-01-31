@@ -118,19 +118,19 @@ class ApiService {
 
   // ===== COURTS & BOOKINGS =====
 
-  static Future<List<dynamic>> getCourts() async {
-    final token = await _getToken();
-    if (token == null) return [];
-
+    print('🏟️ Fetching courts: $baseUrl/court');
     final response = await http.get(
       Uri.parse('$baseUrl/court'),
       headers: {'Authorization': 'Bearer $token'},
     );
 
+    print('🏟️ Get courts response: ${response.statusCode}');
     if (response.statusCode == 200) {
       return jsonDecode(response.body) as List<dynamic>;
+    } else {
+      print('❌ Get courts failed: ${response.body}');
+      return [];
     }
-    return [];
   }
 
   static Future<bool> createCourt({
@@ -225,11 +225,14 @@ class ApiService {
       Uri.parse('$baseUrl/member'),
       headers: {'Authorization': 'Bearer $token'},
     );
+    print('👥 Get members response: ${res.statusCode}');
     if (res.statusCode == 200) {
       final body = jsonDecode(res.body) as Map<String, dynamic>;
       return body['items'] as List<dynamic>;
+    } else {
+      print('❌ Get members failed: ${res.body}');
+      return [];
     }
-    return [];
   }
 
   static Future<List<dynamic>> getBookingsCalendar({
@@ -243,15 +246,19 @@ class ApiService {
       '$baseUrl/booking/calendar?from=${from.toIso8601String()}&to=${to.toIso8601String()}',
     );
 
+    print('📅 Fetching calendar: $uri');
     final res = await http.get(
       uri,
       headers: {'Authorization': 'Bearer $token'},
     );
 
+    print('📅 Get calendar response: ${res.statusCode}');
     if (res.statusCode == 200) {
       return jsonDecode(res.body) as List<dynamic>;
+    } else {
+      print('❌ Get calendar failed: ${res.body}');
+      return [];
     }
-    return [];
   }
 
   static Future<List<dynamic>> getMyBookings() async {
@@ -577,7 +584,7 @@ class ApiService {
     final token = await _getToken();
     if (token == null) return [];
 
-    try {
+      print('⚔️ Fetching challenges: $baseUrl/match/challenges');
       final response = await http.get(
         Uri.parse('$baseUrl/match/challenges'),
         headers: {
@@ -586,8 +593,11 @@ class ApiService {
         },
       );
 
+      print('⚔️ Get challenges response: ${response.statusCode}');
       if (response.statusCode == 200) {
         return jsonDecode(response.body);
+      } else {
+        print('❌ Get challenges failed: ${response.body}');
       }
     } catch (e) {
       print('Error fetching challenges: $e');

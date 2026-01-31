@@ -8,7 +8,7 @@ using System.Security.Claims;
 namespace Pcm.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/tournament")]
     [Authorize]
     public class TournamentController : ControllerBase
     {

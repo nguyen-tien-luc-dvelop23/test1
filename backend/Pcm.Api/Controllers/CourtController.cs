@@ -6,7 +6,8 @@ using Pcm.Domain.Entities;
 namespace Pcm.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/court")]
+    [Authorize]
     public class CourtController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -16,8 +17,14 @@ namespace Pcm.Api.Controllers
             _context = context;
         }
 
+        // GET: api/court/ping
+        [HttpGet("ping")]
+        [AllowAnonymous]
+        public IActionResult Ping() => Ok("CourtController is alive!");
+
         // GET: api/court
         [HttpGet]
+        [AllowAnonymous] // Allow viewing courts publicly
         public async Task<IActionResult> GetAll()
         {
             var courts = await _context.Courts.ToListAsync();
@@ -26,6 +33,7 @@ namespace Pcm.Api.Controllers
 
         // POST: api/court
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] Court court)
         {
             if (court == null)
@@ -39,6 +47,7 @@ namespace Pcm.Api.Controllers
 
         // PUT: api/court/{id}
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, [FromBody] Court court)
         {
             var existing = await _context.Courts.FindAsync(id);
@@ -55,6 +64,7 @@ namespace Pcm.Api.Controllers
 
         // DELETE: api/court/{id}
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var court = await _context.Courts.FindAsync(id);

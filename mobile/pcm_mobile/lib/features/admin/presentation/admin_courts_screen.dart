@@ -112,8 +112,9 @@ class _AdminCourtsScreenState extends State<AdminCourtsScreen> {
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                    const SnackBar(
-                    content: Text('Lỗi kết nối hoặc phân quyền. Vui lòng thử lại.'),
+                    content: Text('Lỗi: Không có quyền (403) hoặc Lỗi server. Vui lòng check lại tài khoản Admin.'),
                     backgroundColor: Colors.red,
+                    duration: Duration(seconds: 4),
                   ),
                 );
               }
