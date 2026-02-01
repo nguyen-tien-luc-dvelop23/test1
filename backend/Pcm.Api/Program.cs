@@ -29,7 +29,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 31))
     );
 });
@@ -154,10 +153,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Minimal API Ping - Always Works
-app.MapGet("/ping", () => "pong");
-
-app.MapControllers();
-app.MapGet("/api/version", () => new { Version = "1.0.23", LastUpdated = DateTime.Now.ToString(), Status = "Active" });
+app.MapGet("/api/version", () => new { Version = "1.0.25", LastUpdated = DateTime.Now.ToString(), Status = "Active" });
 app.MapHub<Pcm.Api.Hubs.PcmHub>("/pcmHub");
 
 app.Run();
