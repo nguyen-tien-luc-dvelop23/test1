@@ -161,7 +161,14 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Minimal API Ping - Always Works
-app.MapGet("/api/version", () => new { Version = "1.0.29", LastUpdated = DateTime.Now.ToString(), Status = "Active" });
+app.MapGet("/api/version", () => new { Version = "1.0.30", LastUpdated = DateTime.Now.ToString(), Status = "Active" });
 app.MapHub<Pcm.Api.Hubs.PcmHub>("/pcmHub");
+
+// Log the listening ports for debugging
+var addresses = app.Urls;
+foreach (var address in addresses)
+{
+    Console.WriteLine($"AppName: Pcm.Api, Listening on: {address}");
+}
 
 app.Run();

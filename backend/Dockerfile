@@ -26,6 +26,7 @@ COPY --from=build /app/publish .
 
 # Expose Port (Render uses PORT env var, but this documents intent)
 EXPOSE 8080
+ENV ASPNETCORE_URLS=http://+:8080
 
 # Entrypoint
 ENTRYPOINT ["dotnet", "Pcm.Api.dll"]
