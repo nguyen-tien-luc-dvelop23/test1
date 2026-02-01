@@ -687,7 +687,7 @@ class ApiService {
   static Future<Map<String, dynamic>> checkServerStatus() async {
     try {
       // 1. Try Ping first (Sanity Check)
-      final ping = await http.get(Uri.parse('$baseUrl/../ping')); // Go up one level from /api/ to root
+      final ping = await http.get(Uri.parse('$baseUrl/ping')); 
       
       final response = await http.get(Uri.parse('$baseUrl/diagnostics'));
       if (response.statusCode == 200) {
