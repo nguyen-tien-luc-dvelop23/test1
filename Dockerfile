@@ -3,17 +3,18 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy Solution and Project files first for caching
-COPY *.sln .
-COPY Pcm.Api/*.csproj Pcm.Api/
-COPY Pcm.Application/*.csproj Pcm.Application/
-COPY Pcm.Domain/*.csproj Pcm.Domain/
-COPY Pcm.Infrastructure/*.csproj Pcm.Infrastructure/
+# Adjusted paths for Root context
+COPY backend/*.sln ./
+COPY backend/Pcm.Api/*.csproj Pcm.Api/
+COPY backend/Pcm.Application/*.csproj Pcm.Application/
+COPY backend/Pcm.Domain/*.csproj Pcm.Domain/
+COPY backend/Pcm.Infrastructure/*.csproj Pcm.Infrastructure/
 
 # Restore dependencies
 RUN dotnet restore
 
 # Copy all code
-COPY . .
+COPY backend/. .
 
 # Build and Publish
 WORKDIR /src/Pcm.Api
