@@ -161,7 +161,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 // Minimal API Ping - Always Works
-app.MapGet("/api/version", () => new { Version = "1.1.0", LastUpdated = DateTime.Now.ToString(), Status = "Stable" });
+app.MapGet("/api/version", () => new { Version = "2.0.0", LastUpdated = DateTime.Now.ToString(), Status = "Completed" });
 app.MapHub<Pcm.Api.Hubs.PcmHub>("/pcmHub");
 
 // CRITICAL: Map Controllers
